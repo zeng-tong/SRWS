@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/tong/Dropbox/ClionProject/Simple-Reactor-Web-Server/src/tcpServer.cpp
+tcpServer.h
+/Users/tong/Dropbox/ClionProject/Simple-Reactor-Web-Server/src/tcpServer.h
+
+/Users/tong/Dropbox/ClionProject/Simple-Reactor-Web-Server/src/tcpServerMain.cpp
+iostream
+-
+tcpServer.h
+/Users/tong/Dropbox/ClionProject/Simple-Reactor-Web-Server/src/tcpServer.h
+
+include/tcpServer.h
+iostream
+-
+
