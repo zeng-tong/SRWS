@@ -4,7 +4,10 @@
 
 #ifndef SIMPLE_REACTOR_WEB_SERVER_TCPSERVER_H
 #define SIMPLE_REACTOR_WEB_SERVER_TCPSERVER_H
-
-#include <iostream>
-void testHello();
+class TcpServer{
+public:
+    int startListen(const char*, short, int);
+private:
+    int sockfd;
+};
 #endif //SIMPLE_REACTOR_WEB_SERVER_TCPSERVER_H

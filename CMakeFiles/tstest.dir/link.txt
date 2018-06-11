@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++   -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/tstest.dir/test/tcpServerTest.cpp.o CMakeFiles/tstest.dir/test/testRunner.cpp.o  -o tstest 

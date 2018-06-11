@@ -1,0 +1,14 @@
+language: cpp
+sudo: required
+dist: trusty
+compiler:
+  - gcc
+  - clang
+os:
+  - osx
+before_install:
+  - brew install cmake
+script:
+  - sh ./build.sh
+notifications:
+    slack: offercome:bL9KPJxyv6OjNRWJCnFTt59R

@@ -1,5 +1,0 @@
-/Users/tong/Dropbox/ClionProject/Simple-Reactor-Web-Server/CMakeFiles/rebuild_cache.dir
-/Users/tong/Dropbox/ClionProject/Simple-Reactor-Web-Server/CMakeFiles/edit_cache.dir
-/Users/tong/Dropbox/ClionProject/Simple-Reactor-Web-Server/CMakeFiles/test.dir
-/Users/tong/Dropbox/ClionProject/Simple-Reactor-Web-Server/CMakeFiles/tstest.dir
-/Users/tong/Dropbox/ClionProject/Simple-Reactor-Web-Server/CMakeFiles/tcp_server.dir
