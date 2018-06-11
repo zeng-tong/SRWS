@@ -7,7 +7,7 @@ compiler:
 os:
   - osx
 before_install:
-  - brew install cmake
+  - brew upgrade cmake
 script:
   - sh ./build.sh
 notifications:
