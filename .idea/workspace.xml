@@ -12,7 +12,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2821c7df-a6c6-45b0-b4ad-fac682ed5d9a" name="Default" comment="" />
+    <list default="true" id="2821c7df-a6c6-45b0-b4ad-fac682ed5d9a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/utils.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/utils.hpp" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,7 +67,7 @@
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+              <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -229,7 +234,7 @@
       <updated>1528689684790</updated>
       <workItem from="1528689686829" duration="392000" />
       <workItem from="1528690082417" duration="3105000" />
-      <workItem from="1528700667366" duration="12720000" />
+      <workItem from="1528700667366" duration="12135000" />
     </task>
     <servers />
   </component>
@@ -248,12 +253,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16217000" />
+    <option name="totallyTimeSpent" value="15632000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="38" y="23" width="1402" height="877" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26140478" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26140478" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32948717" />
       <window_info anchor="bottom" id="CMake" order="7" weight="0.32948717" />
@@ -262,7 +268,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32948717" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32948717" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.44871795" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.44871795" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -513,7 +519,7 @@
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
         </state>
       </provider>
     </entry>
