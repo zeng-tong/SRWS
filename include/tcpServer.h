@@ -7,6 +7,7 @@
 class TcpServer{
 public:
     int startListen(const char*, short, int);
+    int acceptConnect(struct sockaddr_in*);
 private:
     int sockfd;
 };

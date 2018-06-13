@@ -1,9 +1,7 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.5)
 project(Simple_Reactor_Web_Server)
-
-include_directories("include")
-
 set(CMAKE_CXX_STANDARD 11)
+include_directories("include")
 
 set(TCP_SERVER_FILE "src/tcpServer.cpp")
 set(TCP_SERVER_TEST_FILE "test/tcpServerTest.cpp")
