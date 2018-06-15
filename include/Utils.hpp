@@ -1,9 +1,7 @@
 //
 // Created by tong zeng on 2018/6/11.
 //
-
-#ifndef SIMPLE_REACTOR_WEB_SERVER_UTILS_H
-#define SIMPLE_REACTOR_WEB_SERVER_UTILS_H
+#pragma once
 
 #include <errno.h>
 #include <cstdio>
@@ -14,4 +12,3 @@ void unixerror(const char* msg) {
     fprintf(stderr, "%s, %s\n", msg, strerror(errno));
     exit(1);
 }
-#endif //SIMPLE_REACTOR_WEB_SERVER_UTILS_H
