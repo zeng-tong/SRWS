@@ -2,6 +2,7 @@
 // Created by tong zeng on 2018/6/14.
 //
 
+#include <cstdio>
 #include <fcntl.h>
 #include <sys/epoll.h>
 #include <cerrno>
@@ -9,7 +10,10 @@
 #include <cassert>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include "ProcessPool.h"
+#include <cstring>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include "processPool.h"
 
 const static int PARENT = 1;
 const static int CHILD = 0;
@@ -31,7 +35,7 @@ static void addFd(int epollFd, int fd) {
 }
 
 static void removeFd(int epollFd, int fd) {
-    epoll_ctl(epollFd, EPOLL_CTL_DEL, fd);
+    epoll_ctl(epollFd, EPOLL_CTL_DEL, fd, 0);
     close(fd);
 }
 
@@ -54,15 +58,18 @@ static void addSig(int sig, void (handler)(int), bool restart = true) {
 }
 
 template<typename T>
-static ProcessPool<T> *ProcessPool::instance = nullptr;
-static const int ProcessPool::MAX_PROCESS_NUMBER = 16;// 子进程最大个数
-static const int ProcessPool::USER_PER_PROCESS = 65536;//子进程能处理的最大客户数量
-static const int ProcessPool::MAX_EVENT_NUMBER = 10000; // epoll 处理的事件数
+ProcessPool<T> *ProcessPool<T>::instance = nullptr;
+template<typename T>
+const int ProcessPool<T>::MAX_PROCESS_NUMBER = 16;// 子进程最大个数
+template<typename T>
+const int ProcessPool<T>::USER_PER_PROCESS = 65536;//子进程能处理的最大客户数量
+template<typename T>
+const int ProcessPool<T>::MAX_EVENT_NUMBER = 10000; // epoll 处理的事件数
 
 Process::Process() : pid(-1) {}
 
 template<typename T>
-ProcessPool<T>::ProcessPool(int listen_fd, int process_number = 8): listenFd(listen_fd), processNumber(process_number),
+ProcessPool<T>::ProcessPool(int listen_fd, int process_number): listenFd(listen_fd), processNumber(process_number),
                                                                 stop(false), idx(-1) {
     assert((processNumber > 0) && (processNumber <= MAX_EVENT_NUMBER));
 
@@ -87,9 +94,14 @@ ProcessPool<T>::ProcessPool(int listen_fd, int process_number = 8): listenFd(lis
     }
 }
 
+template<typename T>
+ProcessPool<T>::~ProcessPool() {
+    delete[] subProcess;
+    subProcess = nullptr;
+}
 
 template<typename T>
-ProcessPool<T> *ProcessPool<T>::getInstance(int listen_fd, int process_number = 8) {
+ProcessPool<T> *ProcessPool<T>::getInstance(int listen_fd, int process_number) {
     if (instance == nullptr) {
         instance = new ProcessPool(listen_fd, process_number);
     }
@@ -113,9 +125,9 @@ void ProcessPool<T>::setupSigPipe() {
 template<typename T>
 void ProcessPool<T>::run() {
     if (idx == -1) {
-        runChild();
-    } else {
         runParent();
+    } else {
+        runChild();
     }
 }
 
@@ -155,11 +167,11 @@ void ProcessPool<T>::runChild() {
                     addFd(epollFd, connd);
                     users[connd].init(epollFd, connd, clientAddress);
                 }
-            } else if (sockfd == pipeFd && events[i].events & EPOLLIN) {
+            } else if (sockfd == sigPipefd[0] && events[i].events & EPOLLIN) {
                 int sig;
                 char signals[1024];
                 ret = recv(sigPipefd[0], signals, sizeof(signals), 0);
-                if (ret < 0) {
+                if (ret <= 0) {
                     continue;
                 } else {
                     for (int j = 0; j < ret; ++j) {
@@ -187,11 +199,92 @@ void ProcessPool<T>::runChild() {
             }
         }
     }
-    delete [] users;
+    delete[] users;
     users = nullptr;
     close(pipeFd);
     close(epollFd);
 }
 
+template<typename T>
+void ProcessPool<T>::runParent() {
+    setupSigPipe();
+    addFd(epollFd, listenFd);
+    epoll_event events[MAX_EVENT_NUMBER];
 
+    int subProcessCounter = 0;
+    int newConn = 1;
+    int number = 0;
+    int ret = -1;
+    while (!stop) {
+        number = epoll_wait(epollFd, events, MAX_EVENT_NUMBER, -1);
+        if (number < 0 && errno == EINTR) {
+            printf("epoll failure\n");
+            break;
+        }
+
+        for (int i = 0; i < number; ++i) {
+            int sockfd = events[i].data.fd;
+            if (sockfd == listenFd) {
+                int c = subProcessCounter;
+                do {
+                    if (subProcess[c].pid != -1) break;
+                    c = (c + 1) % processNumber;
+                } while (c != processNumber);
+
+                if (subProcess[c].pid == -1) {
+                    stop = true;
+                    break;
+                }
+                subProcessCounter = (c + 1) % processNumber;
+                send(subProcess[i].pipefd[0], (char *) &newConn, sizeof(newConn), 0);
+                printf("send request to child %d\n", c);
+            } else if (sockfd == sigPipefd[0] && (events[i].events & EPOLLIN)) {
+                int sig;
+                char signals[1024];
+                ret = recv(sigPipefd[0], signals, sizeof(signals), 0);
+                if (ret <= 0) continue;
+
+                for (int i = 0; i < ret; ++i) {
+                    switch (signals[i]) {
+                        case SIGCHLD: {
+                            pid_t pid;
+                            int stat;
+                            while ((pid = waitpid(-1, &stat, WNOHANG)) > 0) {
+                                for (int i = 0; i < processNumber; ++i) {
+                                    if (subProcess[i].pid == pid) {
+                                        printf("child %d join\n", i);
+                                        close(subProcess[i].pipefd[0]);
+                                        subProcess[i].pid = -1;
+                                    }
+                                }
+                            }
+                            stop = true;
+                            for (int i = 0; i < processNumber; ++i) {
+                                if (subProcess[i].pid != -1) {
+                                    stop = false;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                        case SIGTERM:
+                        case SIGINT: {
+                            printf("kill all the child now\n");
+                            for (int i = 0; i < processNumber; ++i) {
+                                int pid = subProcess[i].pid;
+                                if (pid != -1) kill(pid, SIGTERM);
+                            }
+                            break;
+                        }
+                        default:
+                            break;
+                    }
+                }
+            } else {
+                continue;
+            }
+        }
+    }
+    close(epollFd);
+}
 

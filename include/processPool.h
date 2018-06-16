@@ -2,14 +2,11 @@
 // Created by tong zeng on 2018/6/14.
 //
 #pragma once
-
 #include <unistd.h>
-#include <atomic>
-#include <mutex>
 
 struct Process {
     pid_t pid;
-    int pipefd[2]{};
+    int pipefd[2]{}; // 用于通知子进程调用 accept 建立连接。
 
     Process();
 };
@@ -26,7 +23,7 @@ private:
     int listenFd;
     int stop;
     Process *subProcess; // Save information of all sub_process
-    static ProcessPool<T> *instance;  // Singleton, 不会用于多线程模型下，不考虑线程安全问题
+    static ProcessPool<T> *instance;  // Singleton 
 private:
     explicit ProcessPool(int listen_fd, int process_number = 8);
     ~ProcessPool();

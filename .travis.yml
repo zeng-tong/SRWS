@@ -3,11 +3,19 @@ sudo: required
 dist: trusty
 compiler:
   - gcc
-  - clang
 os:
-  - osx
+  - linux
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-6
+  env:
+    - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
+
 before_install:
-  - brew upgrade cmake
+  - eval "${MATRIX_EVAL}"
 script:
   - sh ./build.sh
 

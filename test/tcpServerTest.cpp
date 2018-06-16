@@ -3,8 +3,8 @@
 //
 #include <netinet/in.h>
 #include "catch.hpp"
-#include "TcpServer.h"
-#include "ProcessPool.h"
+#include "tcpServer.h"
+#include "processPool.h"
 
 TEST_CASE("tcpServer bind to localhost:8080, success should return  zero") {
     TcpServer tcpServer{};
