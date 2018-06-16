@@ -12,3 +12,7 @@ void unixerror(const char* msg) {
     fprintf(stderr, "%s, %s\n", msg, strerror(errno));
     exit(1);
 }
+
+class EchoServer {
+    //todo: echoServer 测试多进程代码
+};

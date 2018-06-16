@@ -35,3 +35,7 @@ int TcpServer::acceptConnect(struct sockaddr_in* client) {
     socklen_t clientLength = sizeof(*client);
     return accept(sockfd, (struct sockaddr*) client, &clientLength);
 }
+
+int TcpServer::getSockFd() {
+    return this->sockfd;
+}
