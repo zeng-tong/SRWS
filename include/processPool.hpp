@@ -1,7 +1,9 @@
 //
 // Created by tong zeng on 2018/6/14.
 //
+#pragma once
 
+#include <unistd.h>
 #include <cstdio>
 #include <fcntl.h>
 #include <sys/epoll.h>
@@ -13,7 +15,45 @@
 #include <cstring>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include "processPool.h"
+
+
+struct Process {
+    pid_t pid;
+    int pipefd[2]{}; // 用于通知子进程调用 accept 建立连接。
+
+    Process();
+};
+
+template<typename T>
+class ProcessPool {
+private:
+    static const int MAX_PROCESS_NUMBER;
+    static const int USER_PER_PROCESS;
+    static const int MAX_EVENT_NUMBER;
+    int processNumber;
+    int idx;
+    int epollFd;
+    int listenFd;
+    int stop;
+    Process *subProcess; // Save information of all sub_process
+    static ProcessPool<T> *instance;  // Singleton 
+private:
+    explicit ProcessPool(int listen_fd, int process_number = 8);
+
+    void runChild();
+
+    void runParent();
+
+    void setupSigPipe();
+
+public:
+    static ProcessPool<T> *getInstance(int listen_fd, int process_number = 8);
+
+    void run();
+
+    ~ProcessPool();
+};
+
 
 const static int PARENT = 1;
 const static int CHILD = 0;
@@ -69,8 +109,10 @@ const int ProcessPool<T>::MAX_EVENT_NUMBER = 10000; // epoll 处理的事件数
 Process::Process() : pid(-1) {}
 
 template<typename T>
-ProcessPool<T>::ProcessPool(int listen_fd, int process_number): listenFd(listen_fd), processNumber(process_number),
-                                                                stop(false), idx(-1) {
+ProcessPool<T>::ProcessPool(int listen_fd, int process_number): processNumber(process_number),
+                                                                idx(-1),
+                                                                listenFd(listen_fd),
+                                                                stop(false){
     assert((processNumber > 0) && (processNumber <= MAX_EVENT_NUMBER));
 
     subProcess = new Process[processNumber];
@@ -103,7 +145,7 @@ ProcessPool<T>::~ProcessPool() {
 template<typename T>
 ProcessPool<T> *ProcessPool<T>::getInstance(int listen_fd, int process_number) {
     if (instance == nullptr) {
-        instance = new ProcessPool(listen_fd, process_number);
+        instance = new ProcessPool<T>(listen_fd, process_number);
     }
     return instance;
 }
@@ -114,6 +156,7 @@ void ProcessPool<T>::setupSigPipe() {
     assert(epollFd != -1);
 
     int ret = socketpair(PF_UNIX, SOCK_STREAM, 0, sigPipefd);
+    assert(ret != -1);
     setNonBlocking(sigPipefd[1]);
     addFd(epollFd, sigPipefd[0]);
     addSig(SIGCHLD, sigHandler);
@@ -138,7 +181,7 @@ void ProcessPool<T>::runChild() {
 
     addFd(epollFd, pipeFd);
     epoll_event events[MAX_EVENT_NUMBER];
-    T *users = new T[USER_PER_PROCESS];
+    auto *users = new T[USER_PER_PROCESS];
     assert(users);
 
     int number = 0;
@@ -168,7 +211,6 @@ void ProcessPool<T>::runChild() {
                     users[connd].init(epollFd, connd, clientAddress);
                 }
             } else if (sockfd == sigPipefd[0] && events[i].events & EPOLLIN) {
-                int sig;
                 char signals[1024];
                 ret = recv(sigPipefd[0], signals, sizeof(signals), 0);
                 if (ret <= 0) {
@@ -239,7 +281,6 @@ void ProcessPool<T>::runParent() {
                 send(subProcess[i].pipefd[0], (char *) &newConn, sizeof(newConn), 0);
                 printf("send request to child %d\n", c);
             } else if (sockfd == sigPipefd[0] && (events[i].events & EPOLLIN)) {
-                int sig;
                 char signals[1024];
                 ret = recv(sigPipefd[0], signals, sizeof(signals), 0);
                 if (ret <= 0) continue;
@@ -287,4 +328,3 @@ void ProcessPool<T>::runParent() {
     }
     close(epollFd);
 }
-

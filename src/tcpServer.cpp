@@ -8,10 +8,18 @@
 #include <cstring>
 #include <arpa/inet.h>
 
+TcpServer::TcpServer() : sockfd(-1){
+}
+
+TcpServer::~TcpServer() {
+    disConnect();
+}
+
 int TcpServer::startListen(const char *ip, short port, int backlog) {
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0) {
-        unixerror("socket fail");
+        Exception::printError(__FILE__, __LINE__, "Socket fail");
+        return sockfd;
     }
     struct sockaddr_in address{};
     memset(&address, 0, sizeof(address));
@@ -21,9 +29,14 @@ int TcpServer::startListen(const char *ip, short port, int backlog) {
 
     int ret = bind(sockfd, (struct sockaddr *) (&address), sizeof(address));
     if (ret < 0) {
-        unixerror("bind fail");
+        Exception::printError(__FILE__, __LINE__, "Bind fail");
+        disConnect();
+        return sockfd;
     }
     ret = listen(sockfd, backlog);
+    if (ret < 0) {
+        disConnect();
+    }
     return ret;
 }
 
@@ -38,4 +51,15 @@ int TcpServer::acceptConnect(struct sockaddr_in* client) {
 
 int TcpServer::getSockFd() {
     return this->sockfd;
+}
+
+void TcpServer::disConnect() {
+    if (this->sockfd > 0) {
+        close(sockfd);
+        sockfd = -1;
+    }
+}
+
+bool TcpServer::isConnected() {
+    return this->sockfd > 0;
 }
