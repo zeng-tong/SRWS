@@ -22,16 +22,23 @@ public:
     static void printError(const char* filepath,int line, const char* msg) {
         fprintf(stderr, "%s at line %d : %s, %s\n", filepath, line, msg, strerror(errno));
     }
+    static void printNormalError(const char* filepath,int line, const char* msg) {
+        fprintf(stderr, "%s at line %d : %s\n", filepath, line, msg);
+    }
 };
 class EchoClient {
 public:
-    EchoClient() {
-        this->sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    EchoClient() : sockfd(-1){
     }
     ~EchoClient() {
         disConnect();
     }
     int startConnect(const char *ip, short port) {
+        if ( isConnected() ) {
+            Exception::printNormalError(__FILE__, __LINE__, "Already Connected");
+            return -1;
+        }
+        this->sockfd = socket(AF_INET, SOCK_STREAM, 0);
         struct sockaddr_in serverAddress;
         memset(&serverAddress, 0, sizeof(serverAddress));
         serverAddress.sin_port = htons(port);
@@ -40,6 +47,10 @@ public:
         return connect(this->sockfd, (struct sockaddr *) &serverAddress, sizeof(serverAddress));
     }
     int sendMessage(const char* msg) {
+        if ( !isConnected() ) {
+            Exception::printNormalError(__FILE__, __LINE__, "Not Connected");
+            return -1;
+        }
         return write(sockfd, msg, strlen(msg));
     }
     void disConnect() {
@@ -51,9 +62,16 @@ public:
         }
     }
     std::string getMessage() {
+        if ( !isConnected() ) {
+            Exception::printNormalError(__FILE__, __LINE__, "Not Connected");
+            return "";
+        }
         char buffer[1024] = {'\0'};
         recv(sockfd, buffer, 1023, 0);
         return std::string(buffer);
+    }
+    bool isConnected() {
+        return this->sockfd > 0;
     }
 
 private:
