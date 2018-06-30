@@ -16,6 +16,7 @@ add_executable(ppt ${TCP_SERVER_FILE} ${PROCESS_POOL_TEST_FILE} "test/testRunner
 
 add_executable(main ${TCP_SERVER_FILE} "src/main.cpp")
 
+add_executable(pressure_test "test/tcpPressureTest.cpp")
 enable_testing()
 add_test(NAME "tcp_server_test" COMMAND "tstest")
 add_test(NAME "process_pool_test" COMMAND "ppt")

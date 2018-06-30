@@ -235,7 +235,7 @@ void ProcessPool<T>::runChild() {
                     }
                 }
             } else if (events[i].events & EPOLLIN) {
-                users[sockfd].process();
+                if (users[sockfd].process() < 0) removeFd(epollFd, sockfd);
             } else {
                 continue;
             }
