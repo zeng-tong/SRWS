@@ -2,11 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="Simple_Reactor_Web_Server" targetName="pressure_test" />
-      <config projectName="Simple_Reactor_Web_Server" targetName="tcp_server" />
-      <config projectName="Simple_Reactor_Web_Server" targetName="ppt" />
-      <config projectName="Simple_Reactor_Web_Server" targetName="main" />
-      <config projectName="Simple_Reactor_Web_Server" targetName="tstest" />
+      <config projectName="Project" targetName="tstest" />
+      <config projectName="Project" targetName="tcp_server" />
+      <config projectName="Project" targetName="ppt" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -15,13 +13,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2821c7df-a6c6-45b0-b4ad-fac682ed5d9a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/test/httpServerTest.cpp" afterDir="false" />
+    <list default="true" id="2821c7df-a6c6-45b0-b4ad-fac682ed5d9a" name="Default" comment="fatal bug fix, close socket">
       <change afterPath="$PROJECT_DIR$/test/tcpPressureTest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/processPool.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/processPool.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/utils.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/utils.hpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -32,151 +28,110 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.25854036">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="tcpServerTest.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/tcpServerTest.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="tcpServer.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/tcpServer.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="processPoolTest.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/processPoolTest.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-26">
-                  <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-                  <folding>
-                    <element signature="e#0#20#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="httpServerTest.cpp" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/test/httpServerTest.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="6" selection-start-line="6" selection-end-line="6" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="processPool.hpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/processPool.hpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="216">
-                  <caret line="230" column="29" lean-forward="true" selection-start-line="230" selection-start-column="29" selection-end-line="230" selection-end-column="29" />
-                  <folding>
-                    <element signature="e#415#427#0" expanded="true" />
-                    <element signature="e#2090#2102#0" expanded="true" />
-                    <element signature="e#2163#2175#0" expanded="true" />
-                    <element signature="e#2245#2257#0" expanded="true" />
-                    <element signature="e#2333#2345#0" expanded="true" />
-                    <element signature="e#2456#2468#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-                  <folding>
-                    <element signature="e#38#64#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="baseHandler.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/baseHandler.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="utils.hpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/utils.hpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="93" column="10" selection-start-line="93" selection-start-column="10" selection-end-line="93" selection-end-column="10" />
-                  <folding>
-                    <element signature="e#287#773#1" />
-                    <element signature="e#775#2292#1" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="utils.hpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/include/utils.hpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="474">
-                  <caret line="95" column="5" lean-forward="true" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
-                  <folding>
-                    <element signature="e#287#773#1" />
-                    <element signature="e#2346#2519#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="tcpPressureTest.cpp" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/test/tcpPressureTest.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-                  <folding>
-                    <element signature="e#44#60#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="tcpServer.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/tcpServer.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="365">
-                  <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="18" column="56" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="tcpServerTest.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/tcpServerTest.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tcpServer.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/tcpServer.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="processPoolTest.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/processPoolTest.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utils.hpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/include/utils.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="69" column="9" lean-forward="true" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
+              <folding>
+                <element signature="e#287#773#1" />
+                <element signature="e#1492#1723#0" />
+                <element signature="e#1728#1798#0" />
+                <element signature="e#1803#1909#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="httpServerTest.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/httpServerTest.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tcpPressureTest.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/tcpPressureTest.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="35" column="9" lean-forward="true" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="processPool.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/processPool.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+              <folding>
+                <element signature="e#415#427#0" expanded="true" />
+                <element signature="e#2090#2102#0" expanded="true" />
+                <element signature="e#2163#2175#0" expanded="true" />
+                <element signature="e#2245#2257#0" expanded="true" />
+                <element signature="e#2333#2345#0" expanded="true" />
+                <element signature="e#2456#2468#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+              <folding>
+                <element signature="e#38#64#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baseHandler.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/baseHandler.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -212,7 +167,6 @@
         <option value="$PROJECT_DIR$/include/baseHandler.h" />
         <option value="$PROJECT_DIR$/include/processPool.h" />
         <option value="$PROJECT_DIR$/src/processPool.cpp" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/echoServer.py" />
         <option value="$PROJECT_DIR$/include/tcpServer.h" />
         <option value="$PROJECT_DIR$/src/tcpServer.cpp" />
@@ -223,10 +177,11 @@
         <option value="$PROJECT_DIR$/test/httpServerTest.cpp" />
         <option value="$PROJECT_DIR$/include/tcp_pressure_test.hpp" />
         <option value="$PROJECT_DIR$/test/tcp_pressure_test.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/include/utils.hpp" />
         <option value="$PROJECT_DIR$/include/processPool.hpp" />
         <option value="$PROJECT_DIR$/test/tcpPressureTest.cpp" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/include/utils.hpp" />
       </list>
     </option>
   </component>
@@ -246,7 +201,7 @@
     <packageJsonPaths />
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="720" />
     <option name="y" value="23" />
     <option name="width" value="720" />
@@ -258,7 +213,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -269,22 +223,13 @@
             <path>
               <item name="Simple_Reactor_Web_Server" type="b2602c69:ProjectViewProjectNode" />
               <item name="Simple-Reactor-Web-Server" type="462c0819:PsiDirectoryNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Simple_Reactor_Web_Server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Simple-Reactor-Web-Server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Simple_Reactor_Web_Server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Simple-Reactor-Web-Server" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -316,13 +261,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.pressure_test">
-    <configuration name="main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Simple_Reactor_Web_Server" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Simple_Reactor_Web_Server" RUN_TARGET_NAME="main" />
-    <configuration name="pressure_test" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="159.89.203.217 8080 200" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Simple_Reactor_Web_Server" TARGET_NAME="pressure_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Simple_Reactor_Web_Server" RUN_TARGET_NAME="pressure_test" />
-    <list>
-      <item itemvalue="Application.main" />
-      <item itemvalue="Application.pressure_test" />
-    </list>
+  <component name="RunManager">
+    <configuration name="pressure_test" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="159.89.203.217 8080 200" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="pressure_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="pressure_test" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -361,7 +301,12 @@
       <workItem from="1529798953582" duration="21000" />
       <workItem from="1529801187862" duration="6000" />
       <workItem from="1529934976325" duration="7000" />
-      <workItem from="1530335932610" duration="4348000" />
+      <workItem from="1530335932610" duration="9126000" />
+      <workItem from="1530405944309" duration="850000" />
+      <workItem from="1530603078962" duration="165000" />
+      <workItem from="1530783729782" duration="143000" />
+      <workItem from="1530783913620" duration="1161000" />
+      <workItem from="1530837306853" duration="1427000" />
     </task>
     <task id="LOCAL-00001" summary="change cmake version.">
       <created>1528873926023</created>
@@ -398,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1529220330815</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fatal bug fix, close socket | close_wait too many.">
+      <created>1530365339540</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1530365339540</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -434,23 +386,23 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87885000" />
+    <option name="totallyTimeSpent" value="96409000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="827" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49908924" visible="true" weight="0.092318535" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49908924" visible="true" weight="0.2149401" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32692307" />
-      <window_info anchor="bottom" id="CMake" order="11" sideWeight="0.62015504" weight="0.23214285" />
+      <window_info anchor="bottom" id="CMake" order="11" sideWeight="0.62015504" weight="0.17523609" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.37984496" side_tool="true" weight="0.32587412" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.23835616" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32948717" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.23835616" />
       <window_info id="Structure" order="1" sideWeight="0.50091076" side_tool="true" weight="0.14517266" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989429" weight="0.3434066" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39979014" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989429" weight="0.34102833" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39979014" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -500,7 +452,8 @@
     <MESSAGE value="todo :「编写 echo 服务器用于测试」" />
     <MESSAGE value="完成 echo 客户端. Todo: echo 服务器传入进程池，测试进程池功能。" />
     <MESSAGE value="完成echo 服务器功能，客户端发送消息被正常回射。" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成echo 服务器功能，客户端发送消息被正常回射。" />
+    <MESSAGE value="fatal bug fix, close socket | close_wait too many." />
+    <option name="LAST_COMMIT_MESSAGE" value="fatal bug fix, close socket | close_wait too many." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -517,16 +470,7 @@
     <select />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor>
-            <caret column="24" selection-start-column="24" selection-end-column="24" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="file://$PROJECT_DIR$/test/tcpServerTest.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -631,14 +575,6 @@
           <caret line="1" column="55" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="55" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="60">
-            <caret line="4" column="65" lean-forward="true" selection-start-line="4" selection-start-column="65" selection-end-line="4" selection-end-column="65" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/Temporary/LastTestsFailed.log" />
     <entry file="file://$PROJECT_DIR$/Testing/Temporary/LastTest.log" />
@@ -674,13 +610,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/processPool.cpp" />
     <entry file="file://$PROJECT_DIR$/CMakeCache.txt" />
-    <entry file="file://$PROJECT_DIR$/build.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" selection-start-line="1" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Simple_Reactor_Web_Server.cbp" />
     <entry file="file://$PROJECT_DIR$/echoServer.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -703,13 +632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/tcpServerTest.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -724,37 +646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="56" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tcpServer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/baseHandler.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/processPoolTest.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -765,10 +656,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/tcpServer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="7" lean-forward="true" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/baseHandler.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/include/processPool.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="230" column="29" lean-forward="true" selection-start-line="230" selection-start-column="29" selection-end-line="230" selection-end-column="29" />
+        <state relative-caret-position="340">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
           <folding>
             <element signature="e#415#427#0" expanded="true" />
             <element signature="e#2090#2102#0" expanded="true" />
@@ -787,23 +713,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/utils.hpp">
+    <entry file="file://$PROJECT_DIR$/test/tcpPressureTest.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="95" column="5" lean-forward="true" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
+        <state relative-caret-position="480">
+          <caret line="35" column="9" lean-forward="true" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/processPoolTest.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
           <folding>
-            <element signature="e#287#773#1" />
-            <element signature="e#2346#2519#0" />
+            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/tcpPressureTest.cpp">
+    <entry file="file://$PROJECT_DIR$/include/utils.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="348">
+          <caret line="69" column="9" lean-forward="true" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
           <folding>
-            <element signature="e#44#60#0" expanded="true" />
+            <element signature="e#287#773#1" />
+            <element signature="e#1492#1723#0" />
+            <element signature="e#1728#1798#0" />
+            <element signature="e#1803#1909#0" />
           </folding>
         </state>
       </provider>

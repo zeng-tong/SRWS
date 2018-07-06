@@ -61,7 +61,9 @@ public:
             shutdown(sockfd, SHUT_WR);
         }
     }
-    std::string getMessage() {
+    std::string getMessage(int timeout = 3) {
+        struct timeval waiting = {timeout};
+        setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, &waiting, sizeof(waiting));
         if ( !isConnected() ) {
             Exception::printNormalError(__FILE__, __LINE__, "Not Connected");
             return "";
